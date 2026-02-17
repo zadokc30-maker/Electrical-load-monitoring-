@@ -17,7 +17,6 @@ public:
         return (powerRating * dailyUsageHours) / 1000; // kWh
     }
 };
-
     vector<Appliance> appliances;
     int choice;
     do {
@@ -29,10 +28,22 @@ public:
             cout << "Enter name: ";
             cin.ignore();
             getline(cin, name);
+            if (name.empty()) {
+                cout << "Name cannot be empty!\n";
+                continue;
+            }
             cout << "Enter power rating (W): ";
             cin >> power;
+            if (power <= 0) {
+                cout << "Power must be greater than 0!\n";
+                continue;
+            }
             cout << "Enter daily usage (hours): ";
             cin >> hours;
+            if (hours < 0 || hours > 24) {
+                cout << "Hours must be between 0 and 24!\n";
+                continue;
+            }
             appliances.push_back(Appliance(name, power, hours));
         } else if (choice == 2) {
             if (appliances.empty()) {
