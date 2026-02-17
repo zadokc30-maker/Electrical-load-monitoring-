@@ -1,0 +1,46 @@
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+int main(){
+
+class Appliance {
+public:
+    string name;
+    double powerRating; // watts
+    double dailyUsageHours;
+    Appliance(string n, double pr, double hours) : name(n), powerRating(pr), dailyUsageHours(hours) {}
+    void display() {
+        cout << "Name: " << name << ", Power: " << powerRating << "W, Usage: " << dailyUsageHours << " hours/day\n";
+    }
+    double calculateEnergy() { 
+        return (powerRating * dailyUsageHours) / 1000; // kWh
+    }
+};
+
+    vector<Appliance> appliances;
+    int choice;
+    do {
+        cout << "1. Register appliance\n2. View appliances\n3. Exit\n";
+        cin >> choice;
+        if (choice == 1) {
+            string name;
+            double power, hours;
+            cout << "Enter name: ";
+            cin.ignore();
+            getline(cin, name);
+            cout << "Enter power rating (W): ";
+            cin >> power;
+            cout << "Enter daily usage (hours): ";
+            cin >> hours;
+            appliances.push_back(Appliance(name, power, hours));
+        } else if (choice == 2) {
+            if (appliances.empty()) {
+                cout << "No appliances registered.\n";
+            } else {
+                for (auto& a : appliances) a.display();
+            }
+        }
+    } while (choice != 3);
+    return 0;
+}
