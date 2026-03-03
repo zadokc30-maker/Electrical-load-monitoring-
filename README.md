@@ -7,7 +7,7 @@ HND 2 EEE MIDSEM CAPSTONE PROJECT
 Platform: -Windows, -Offline First
 
 ## Author
-Cynthia 
+Mannah Cynthia Abla - 01240779D
 
 ## Week 1
  	Create GitHub repository and initial project structure
